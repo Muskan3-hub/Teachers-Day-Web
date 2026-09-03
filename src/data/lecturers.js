@@ -1,3 +1,56 @@
+import hodPhoto from "../assets/hod.jpeg";
+import venkateshwarluPhoto from "../assets/venkateshwarlu.jpeg";
+import vamshidharPhoto from "../assets/vamshidhar.jpeg";
+import saiPushpaLathaPhoto from "../assets/sai-pushpa-latha.jpeg";
+import aparanjiniPhoto from "../assets/aparajini-priyadarshini.jpeg";
+import gPadmaPhoto from "../assets/g-padma.jpeg";
+export const guides = [
+  {
+    id: "n-srinivas-rao",
+    name: "Dr. N. Srinivas Rao",
+    role: "HOD — Data Science Department",
+    year: "2nd Year",
+    salutation: "Dear Sir,",
+    shortDescription:
+      "A guiding presence who leads the Data Science department and inspires us to learn, grow, and move forward with confidence.",
+    quote:
+      "A great guide helps us see possibilities beyond what we can see ourselves.",
+    message: `
+On the occasion of Teachers' Day, we would like to express our sincere gratitude for your guidance and leadership as the Head of the Data Science Department.
+
+Your vision, encouragement, and commitment to the academic growth of students have played an important role in shaping our learning journey. Your guidance motivates us to approach our studies with greater responsibility, confidence, and determination.
+
+Thank you for creating an environment that encourages learning, discipline, innovation, and continuous improvement. We truly value the opportunities and direction you provide to us as students.
+
+We are grateful for your support and leadership and wish you a very Happy Teachers' Day.
+`,
+    closing: "With sincere respect and gratitude,",
+    photo: hodPhoto,
+  },
+
+  {
+    id: "deepika-reddy",
+    name: "Deepika Reddy",
+    role: "2nd Year Incharge — Data Science",
+    year: "2nd Year",
+    salutation: "Dear Ma'am,",
+    shortDescription:
+      "A supportive guide who helps us navigate our second-year journey with encouragement, care, and direction.",
+    quote:
+      "The right guidance makes every journey a little easier and a lot more meaningful.",
+    message: `
+On the occasion of Teachers' Day, we would like to express our heartfelt appreciation for your guidance and support as our 2nd Year Incharge.
+
+Your continuous encouragement, coordination, and willingness to support students have made our academic journey more organized and meaningful. Your guidance helps us remain focused on our responsibilities and approach every challenge with greater confidence.
+
+Thank you for being approachable, supportive, and considerate throughout our second-year journey. Your efforts and dedication towards the students are sincerely appreciated.
+
+We are grateful for your guidance and wish you a very Happy Teachers' Day.
+`,
+    closing: "With sincere respect and gratitude,",
+    photo: null,
+  },
+];
 
 export const lecturers = [
   {
@@ -45,7 +98,7 @@ We are grateful for everything you do for us.
 With sincere appreciation,
 CSE – Data Science, Section D
 `,
-    photo: null,
+    photo: venkateshwarluPhoto,
   },
 
   {
@@ -70,7 +123,7 @@ Your guidance is something we will carry with us throughout our academic journey
 With sincere gratitude,
 CSE – Data Science, Section D
 `,
-    photo: null,
+    photo: vamshidharPhoto,
   },
 
   {
@@ -95,7 +148,7 @@ We sincerely appreciate your patience, guidance, and constant support.
 With heartfelt appreciation,
 CSE – Data Science, Section D
 `,
-    photo: null,
+    photo: saiPushpaLathaPhoto,
   },
 
   {
@@ -120,7 +173,7 @@ We will always remember your lessons with both respect and fondness.
 With sincere gratitude and warm regards,
 CSE – Data Science, Section D
 `,
-    photo: null,
+    photo: aparanjiniPhoto,
   },
 
   {
@@ -145,7 +198,7 @@ Although we may not always admit it in the moment, we truly value the lessons yo
 With sincere respect and gratitude,
 CSE – Data Science, Section D
 `,
-    photo: null,
+    photo: gPadmaPhoto,
   },
 ];
 

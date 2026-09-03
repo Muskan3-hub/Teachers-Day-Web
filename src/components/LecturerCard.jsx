@@ -10,7 +10,40 @@ function LecturerCard({ lecturer, onOpen }) {
       <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-purple-100/60 blur-2xl transition-transform duration-500 group-hover:scale-150" />
 
       <div className="relative">
-        {/* Header */}
+
+        {/* ================= PHOTO ================= */}
+        <div className="mb-6 flex justify-center">
+          {lecturer.photo ? (
+            <div className="relative">
+              <div className="h-36 w-36 overflow-hidden rounded-2xl border-4 border-white bg-purple-50 shadow-lg sm:h-40 sm:w-40">
+                <img
+                  src={lecturer.photo}
+                  alt={lecturer.name}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Small decorative corner */}
+              <div className="absolute -bottom-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-orange-500 text-sm text-white shadow-md">
+                ✦
+              </div>
+            </div>
+          ) : (
+            <div className="flex h-36 w-36 items-center justify-center rounded-2xl border-4 border-white bg-gradient-to-br from-purple-50 to-orange-50 shadow-inner sm:h-40 sm:w-40">
+              <div className="text-center">
+                <span className="block font-serif text-3xl text-purple-300">
+                  ✦
+                </span>
+
+                <span className="mt-1 block text-[9px] font-semibold uppercase tracking-[0.15em] text-slate-400">
+                  Photo Coming Soon
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ================= HEADER ================= */}
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-orange-600 sm:text-xs sm:tracking-[0.2em]">
@@ -49,11 +82,13 @@ function LecturerCard({ lecturer, onOpen }) {
             →
           </span>
         </div>
+
       </div>
     </button>
   );
 }
 
 export default LecturerCard;
+
 
 

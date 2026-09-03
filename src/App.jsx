@@ -1,115 +1,251 @@
 
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 import mrecwLogo from "./assets/mrecw-logo.jpg";
-import { lecturers } from "./data/lecturers";
+import { lecturers, guides } from "./data/lecturers";
+
 import LecturerCard from "./components/LecturerCard";
 import TributePage from "./components/TributePage";
+import GuideCard from "./components/GuideCard";
+import TributeModal from "./components/TributeModal";
 
 function HomePage() {
   const navigate = useNavigate();
+  const [selectedGuide, setSelectedGuide] = useState(null);
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#faf8f4] text-slate-800">
-    {/* Floating decorative petals */}
-    <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
-      <span className="petal left-[8%] top-[25%]">✿</span>
-      <span className="petal petal-slow left-[22%] top-[70%] text-sm">✦</span>
-      <span className="petal petal-fast right-[15%] top-[35%]">✿</span>
-      <span className="petal petal-slow right-[28%] top-[75%] text-sm">✦</span>
-    </div>
-      {/* Decorative background */}
-      <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
+
+      {/* =========================================================
+          GLOBAL DECORATION
+      ========================================================= */}
+
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+
+        {/* Soft background glows */}
         <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-purple-200/30 blur-3xl" />
+
         <div className="absolute -right-40 top-1/3 h-[30rem] w-[30rem] rounded-full bg-orange-200/25 blur-3xl" />
+
         <div className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-yellow-100/35 blur-3xl" />
+
+        {/* Floating petals */}
+        <span className="petal left-[8%] top-[25%]">✿</span>
+
+        <span className="petal petal-slow left-[22%] top-[70%] text-sm">
+          ✦
+        </span>
+
+        <span className="petal petal-fast right-[15%] top-[35%]">
+          ✿
+        </span>
+
+        <span className="petal petal-slow right-[28%] top-[75%] text-sm">
+          ✦
+        </span>
+
       </div>
 
+
       <main className="relative z-10">
-        {/* Header */}
-        <header className="animate-fade-in px-6 pt-10 text-center">
+
+        {/* =========================================================
+            HEADER
+        ========================================================= */}
+
+        <header className="animate-fade-in px-5 pt-8 text-center sm:px-6 sm:pt-10">
+
           <div className="mx-auto flex max-w-6xl flex-col items-center">
-            <div className="rounded-3xl border border-purple-100 bg-white/60 px-6 py-4 shadow-sm backdrop-blur">
+
+            {/* Logo */}
+            <div className="rounded-[1.75rem] border border-purple-100 bg-white/70 px-6 py-4 shadow-[0_8px_30px_rgba(76,29,149,0.06)] backdrop-blur sm:px-7 sm:py-5">
+
               <img
                 src={mrecwLogo}
-                alt="MRECW Logo"
-                className="animate-float h-24 w-auto object-contain md:h-28"
+                alt="Malla Reddy Engineering College for Women Logo"
+                className="animate-float h-20 w-auto object-contain sm:h-24 md:h-28"
               />
+
             </div>
 
-            <p className="mt-6 text-xs font-bold uppercase tracking-[0.28em] text-purple-700 md:text-sm">
+            {/* College name */}
+            <p className="mt-5 max-w-xl text-[10px] font-bold uppercase tracking-[0.22em] text-purple-700 sm:text-xs sm:tracking-[0.28em] md:text-sm">
               Malla Reddy Engineering College for Women
             </p>
 
+            {/* Decorative divider */}
             <div className="mt-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-purple-200" />
-              <span className="text-sm text-orange-500">✦</span>
-              <span className="h-px w-10 bg-purple-200" />
+              <span className="h-px w-8 bg-purple-200 sm:w-10" />
+              <span className="text-xs text-orange-500 sm:text-sm">
+                ✦
+              </span>
+              <span className="h-px w-8 bg-purple-200 sm:w-10" />
             </div>
+
           </div>
+
         </header>
 
-        {/* Hero */}
-        <section className="animate-fade-up mx-auto flex min-h-[68vh] max-w-5xl flex-col items-center justify-center px-6 py-16 text-center">
-          <p className="mb-6 text-xs font-bold uppercase tracking-[0.35em] text-orange-600 md:text-sm">
+
+        {/* =========================================================
+            HERO
+        ========================================================= */}
+
+        <section className="animate-fade-up mx-auto flex min-h-[65vh] max-w-5xl flex-col items-center justify-center px-5 py-14 text-center sm:px-6 sm:py-16">
+
+          <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.3em] text-orange-600 sm:text-xs md:text-sm">
             Teachers' Day • 2026
           </p>
 
-          <h1 className="max-w-4xl font-serif text-5xl font-semibold leading-[1.05] text-purple-950 md:text-7xl">
+          <h1 className="max-w-4xl font-serif text-[3rem] font-semibold leading-[1.02] text-purple-950 sm:text-6xl md:text-7xl">
+
             A Tribute to
+
             <span className="mt-3 block text-orange-600">
               Our Mentors
             </span>
+
           </h1>
 
-          <div className="my-9 flex items-center gap-3">
-            <span className="h-px w-12 bg-purple-200 md:w-20" />
-            <span className="text-orange-500">✦</span>
-            <span className="h-px w-12 bg-purple-200 md:w-20" />
+          {/* Hero divider */}
+          <div className="my-8 flex items-center gap-3 sm:my-9">
+
+            <span className="h-px w-10 bg-purple-200 sm:w-16 md:w-20" />
+
+            <span className="text-orange-500">
+              ✦
+            </span>
+
+            <span className="h-px w-10 bg-purple-200 sm:w-16 md:w-20" />
+
           </div>
 
-          <p className="max-w-2xl text-base leading-8 text-slate-600 md:text-xl md:leading-9">
+          <p className="max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8 md:text-xl md:leading-9">
             To the teachers who guide us, inspire us, challenge us,
             and make our journey a little more meaningful.
           </p>
 
-          <div className="mt-8">
-            <p className="font-serif text-xl font-semibold text-purple-950">
+          {/* Class information */}
+          <div className="mt-7">
+
+            <p className="font-serif text-xl font-semibold text-purple-950 sm:text-2xl">
               CSE – Data Science
             </p>
 
-            <p className="mt-2 text-sm tracking-wide text-slate-500">
+            <p className="mt-2 text-xs tracking-[0.08em] text-slate-500 sm:text-sm">
               Section D&nbsp; • &nbsp;2nd Year
             </p>
+
           </div>
 
-          <div className="mt-14 flex flex-col items-center text-purple-400">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-400">
+          {/* Explore indicator */}
+          <div className="mt-12 flex flex-col items-center text-purple-400 sm:mt-14">
+
+            <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-slate-400 sm:text-[10px]">
               Explore
             </span>
-            <span className="mt-2 animate-bounce text-xl">↓</span>
+
+            <span className="mt-2 animate-bounce text-lg sm:text-xl">
+              ↓
+            </span>
+
           </div>
+
         </section>
 
-        {/* Lecturers */}
-        <section className="mx-auto max-w-6xl px-6 pb-24">
-          <div className="mb-14 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-orange-600 md:text-sm">
+
+        {/* =========================================================
+            OUR GUIDES
+        ========================================================= */}
+
+        <section className="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-16">
+
+          <div className="mb-10 text-center sm:mb-12">
+
+            <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-orange-600 sm:text-xs sm:text-sm">
+              Our Guides
+            </p>
+
+            <div className="mx-auto my-5 flex items-center justify-center gap-2">
+              <span className="h-px w-6 bg-orange-200" />
+              <span className="text-xs text-orange-400">✦</span>
+              <span className="h-px w-6 bg-orange-200" />
+            </div>
+
+            <h2 className="font-serif text-3xl font-semibold text-purple-950 sm:text-4xl md:text-5xl">
+              The People Who Guide Us
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
+              The people who guide, support, and shape our journey.
+            </p>
+
+          </div>
+
+          <div className="grid gap-7 md:grid-cols-2 md:gap-8">
+
+            {guides.map((guide) => (
+              <GuideCard
+                key={guide.id}
+                guide={guide}
+                onOpen={setSelectedGuide}
+              />
+            ))}
+
+          </div>
+
+        </section>
+
+
+        {/* =========================================================
+            SECTION DIVIDER
+        ========================================================= */}
+
+        <div className="mx-auto flex max-w-5xl items-center justify-center gap-4 px-6 py-2">
+
+          <span className="h-px flex-1 bg-gradient-to-r from-transparent to-purple-100" />
+
+          <span className="font-serif text-lg text-orange-400">
+            ❀
+          </span>
+
+          <span className="h-px flex-1 bg-gradient-to-l from-transparent to-purple-100" />
+
+        </div>
+
+
+        {/* =========================================================
+            LECTURERS
+        ========================================================= */}
+
+        <section className="mx-auto max-w-6xl px-5 pb-20 pt-14 sm:px-6 sm:pb-24 sm:pt-16">
+
+          <div className="mb-11 text-center sm:mb-14">
+
+            <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-orange-600 sm:text-xs md:text-sm">
               With Gratitude
             </p>
 
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-purple-950 md:text-5xl">
+            <h2 className="mt-4 font-serif text-3xl font-semibold text-purple-950 sm:text-4xl md:text-5xl">
               To Our Wonderful Teachers
             </h2>
 
-            <div className="mx-auto mt-6 h-px w-16 bg-orange-300" />
+            <div className="mx-auto mt-6 flex items-center justify-center gap-2">
+              <span className="h-px w-7 bg-orange-200" />
+              <span className="text-xs text-orange-400">✦</span>
+              <span className="h-px w-7 bg-orange-200" />
+            </div>
 
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-500 md:text-base">
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
               Each teacher has left a unique mark on our journey.
               Here is a little tribute to each of them.
             </p>
+
           </div>
 
-          <div className="grid gap-7 md:grid-cols-2">
+          <div className="grid gap-6 sm:gap-7 md:grid-cols-2">
+
             {lecturers.map((lecturer) => (
               <LecturerCard
                 key={lecturer.id}
@@ -119,123 +255,201 @@ function HomePage() {
                 }}
               />
             ))}
+
           </div>
+
         </section>
 
-        {/* Quote */}
-        <section className="mx-auto max-w-4xl px-6 pb-24 text-center">
-          <div className="relative overflow-hidden rounded-[2rem] border border-purple-100 bg-white/70 px-7 py-12 shadow-sm backdrop-blur md:px-14 md:py-14">
+
+        {/* =========================================================
+            QUOTE
+        ========================================================= */}
+
+        <section className="mx-auto max-w-4xl px-5 pb-20 sm:px-6 sm:pb-24">
+
+          <div className="relative overflow-hidden rounded-[2rem] border border-purple-100 bg-white/75 px-6 py-11 shadow-[0_15px_45px_rgba(76,29,149,0.06)] backdrop-blur sm:px-10 sm:py-13 md:px-14 md:py-14">
+
+            {/* Glow */}
             <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-purple-100/50 blur-3xl" />
+
             <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-orange-100/40 blur-3xl" />
 
-            <div className="relative">
+            <div className="relative text-center">
+
               <p className="font-serif text-5xl leading-none text-orange-400">
                 “
               </p>
 
-              <p className="mt-2 font-serif text-2xl italic leading-relaxed text-purple-950 md:text-3xl">
+              <p className="mt-2 font-serif text-xl italic leading-9 text-purple-950 sm:text-2xl md:text-3xl md:leading-relaxed">
                 A teacher affects eternity; they can never tell where their
                 influence stops.
               </p>
 
               <div className="mx-auto mt-7 h-px w-12 bg-orange-300" />
 
-              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+              <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400 sm:text-xs">
                 — Henry Adams
               </p>
+
             </div>
+
           </div>
+
         </section>
 
-        {/* Final Teachers' Day Message */}
-        <section className="mx-auto max-w-5xl px-6 pb-24 text-center">
-          <div className="relative overflow-hidden rounded-[2.5rem] border border-purple-100 bg-white/80 px-7 py-14 shadow-xl backdrop-blur md:px-16 md:py-16">
+
+        {/* =========================================================
+            FINAL MESSAGE
+        ========================================================= */}
+
+        <section className="mx-auto max-w-5xl px-5 pb-20 sm:px-6 sm:pb-24">
+
+          <div className="relative overflow-hidden rounded-[2.25rem] border border-purple-100 bg-white/80 px-6 py-12 shadow-[0_20px_60px_rgba(76,29,149,0.08)] backdrop-blur sm:px-10 sm:py-14 md:px-16 md:py-16">
+
+            {/* Decorative glows */}
             <div className="pointer-events-none absolute -left-24 -top-24 h-64 w-64 rounded-full bg-purple-200/30 blur-3xl" />
+
             <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-orange-200/30 blur-3xl" />
 
-            <div className="relative">
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-orange-600 md:text-sm">
+            <div className="relative text-center">
+
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-orange-600 sm:text-xs md:text-sm">
                 A Little More From Us
               </p>
 
-              <div className="mx-auto my-7 flex items-center justify-center gap-3">
-                <span className="h-px w-10 bg-purple-200" />
-                <span className="text-orange-500">✦</span>
-                <span className="h-px w-10 bg-purple-200" />
+              <div className="mx-auto my-6 flex items-center justify-center gap-3 sm:my-7">
+
+                <span className="h-px w-8 bg-purple-200 sm:w-10" />
+
+                <span className="text-orange-500">
+                  ✦
+                </span>
+
+                <span className="h-px w-8 bg-purple-200 sm:w-10" />
+
               </div>
 
-              <h2 className="font-serif text-3xl font-semibold leading-tight text-purple-950 md:text-5xl">
+              <h2 className="font-serif text-2xl font-semibold leading-tight text-purple-950 sm:text-3xl md:text-5xl">
+
                 To the teachers who taught us
-                <span className="block text-orange-600">
+
+                <span className="mt-2 block text-orange-600">
                   more than just a subject...
                 </span>
+
               </h2>
 
-              <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
+              <p className="mx-auto mt-7 max-w-2xl text-sm leading-7 text-slate-600 sm:mt-8 sm:text-base sm:leading-8 md:text-lg">
                 Thank you for every explanation, every correction,
                 every moment of patience, and every time you believed in us.
               </p>
 
-              <p className="mt-8 font-serif text-xl italic leading-8 text-purple-900 md:text-2xl">
+              <p className="mt-7 font-serif text-lg italic leading-8 text-purple-900 sm:mt-8 sm:text-xl md:text-2xl">
                 You are a part of the journey we will always remember.
               </p>
 
-              <div className="mx-auto mt-10 h-px w-16 bg-orange-300" />
+              <div className="mx-auto mt-9 h-px w-14 bg-orange-300 sm:mt-10 sm:w-16" />
 
-              <div className="mt-10">
-                <p className="font-serif text-3xl font-semibold text-purple-950 md:text-4xl">
+              <div className="mt-9 sm:mt-10">
+
+                <p className="font-serif text-2xl font-semibold text-purple-950 sm:text-3xl md:text-4xl">
                   Happy Teachers' Day ❤️
                 </p>
 
-                <p className="mt-4 text-sm text-slate-500">
+                <p className="mt-3 text-xs text-slate-500 sm:mt-4 sm:text-sm">
                   With love, respect, and gratitude
                 </p>
 
-                <p className="mt-2 text-sm font-semibold text-purple-800">
+                <p className="mt-2 text-xs font-semibold text-purple-800 sm:text-sm">
                   CSE – Data Science • Section D
                 </p>
+
               </div>
+
             </div>
+
           </div>
+
         </section>
 
-        {/* Footer */}
-        <footer className="border-t border-purple-100 px-6 py-12 text-center">
-          <p className="font-serif text-xl font-semibold text-purple-950">
+
+        {/* =========================================================
+            FOOTER
+        ========================================================= */}
+
+        <footer className="border-t border-purple-100 px-5 py-10 text-center sm:px-6 sm:py-12">
+
+          <p className="font-serif text-lg font-semibold text-purple-950 sm:text-xl">
             With Love & Gratitude ❤️
           </p>
 
-          <p className="mt-3 text-sm text-slate-500">
+          <p className="mt-2 text-xs text-slate-500 sm:mt-3 sm:text-sm">
             CSE – Data Science • Section D • 2nd Year
           </p>
 
           <div className="mx-auto my-5 flex items-center justify-center gap-3">
-            <span className="h-px w-8 bg-purple-200" />
-            <span className="text-xs text-orange-500">✦</span>
-            <span className="h-px w-8 bg-purple-200" />
+
+            <span className="h-px w-7 bg-purple-200 sm:w-8" />
+
+            <span className="text-xs text-orange-500">
+              ✦
+            </span>
+
+            <span className="h-px w-7 bg-purple-200 sm:w-8" />
+
           </div>
 
-          <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-400">
+          <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-slate-400 sm:text-[10px]">
             Teachers' Day 2026
           </p>
+
         </footer>
+
       </main>
+
+
+      {/* =========================================================
+          GUIDE LETTER MODAL
+      ========================================================= */}
+
+      <TributeModal
+        lecturer={selectedGuide}
+        onClose={() => setSelectedGuide(null)}
+      />
+
     </div>
   );
 }
 
+
 function App() {
   return (
     <BrowserRouter>
+
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/tribute/:id" element={<TributePage />} />
+
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+
+        <Route
+          path="/tribute/:id"
+          element={<TributePage />}
+        />
+
       </Routes>
+
     </BrowserRouter>
   );
 }
 
+
 export default App;
+
+
+
+
 
 
 
