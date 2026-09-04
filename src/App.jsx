@@ -1,6 +1,5 @@
 
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 import mrecwLogo from "./assets/mrecw-logo.jpg";
 import { lecturers, guides } from "./data/lecturers";
@@ -8,11 +7,9 @@ import { lecturers, guides } from "./data/lecturers";
 import LecturerCard from "./components/LecturerCard";
 import TributePage from "./components/TributePage";
 import GuideCard from "./components/GuideCard";
-import TributeModal from "./components/TributeModal";
 
 function HomePage() {
   const navigate = useNavigate();
-  const [selectedGuide, setSelectedGuide] = useState(null);
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#faf8f4] text-slate-800">
@@ -31,7 +28,9 @@ function HomePage() {
         <div className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-yellow-100/35 blur-3xl" />
 
         {/* Floating petals */}
-        <span className="petal left-[8%] top-[25%]">✿</span>
+        <span className="petal left-[8%] top-[25%]">
+          ✿
+        </span>
 
         <span className="petal petal-slow left-[22%] top-[70%] text-sm">
           ✦
@@ -76,11 +75,15 @@ function HomePage() {
 
             {/* Decorative divider */}
             <div className="mt-5 flex items-center gap-3">
+
               <span className="h-px w-8 bg-purple-200 sm:w-10" />
+
               <span className="text-xs text-orange-500 sm:text-sm">
                 ✦
               </span>
+
               <span className="h-px w-8 bg-purple-200 sm:w-10" />
+
             </div>
 
           </div>
@@ -168,9 +171,15 @@ function HomePage() {
             </p>
 
             <div className="mx-auto my-5 flex items-center justify-center gap-2">
+
               <span className="h-px w-6 bg-orange-200" />
-              <span className="text-xs text-orange-400">✦</span>
+
+              <span className="text-xs text-orange-400">
+                ✦
+              </span>
+
               <span className="h-px w-6 bg-orange-200" />
+
             </div>
 
             <h2 className="font-serif text-3xl font-semibold text-purple-950 sm:text-4xl md:text-5xl">
@@ -183,13 +192,17 @@ function HomePage() {
 
           </div>
 
+
+          {/* Guide cards */}
           <div className="grid gap-7 md:grid-cols-2 md:gap-8">
 
             {guides.map((guide) => (
               <GuideCard
                 key={guide.id}
                 guide={guide}
-                onOpen={setSelectedGuide}
+                onOpen={(selectedGuide) => {
+                  navigate(`/tribute/${selectedGuide.id}`);
+                }}
               />
             ))}
 
@@ -232,9 +245,15 @@ function HomePage() {
             </h2>
 
             <div className="mx-auto mt-6 flex items-center justify-center gap-2">
+
               <span className="h-px w-7 bg-orange-200" />
-              <span className="text-xs text-orange-400">✦</span>
+
+              <span className="text-xs text-orange-400">
+                ✦
+              </span>
+
               <span className="h-px w-7 bg-orange-200" />
+
             </div>
 
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
@@ -244,6 +263,8 @@ function HomePage() {
 
           </div>
 
+
+          {/* Lecturer cards */}
           <div className="grid gap-6 sm:gap-7 md:grid-cols-2">
 
             {lecturers.map((lecturer) => (
@@ -407,16 +428,6 @@ function HomePage() {
 
       </main>
 
-
-      {/* =========================================================
-          GUIDE LETTER MODAL
-      ========================================================= */}
-
-      <TributeModal
-        lecturer={selectedGuide}
-        onClose={() => setSelectedGuide(null)}
-      />
-
     </div>
   );
 }
@@ -446,6 +457,8 @@ function App() {
 
 
 export default App;
+
+
 
 
 
