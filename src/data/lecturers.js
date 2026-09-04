@@ -1,9 +1,11 @@
 import hodPhoto from "../assets/hod.jpeg";
+import rukmaniPhoto from "../assets/rukmani-priyanka.jpeg";
+import deepikaPhoto from "../assets/deepika-reddy.png";
 import venkateshwarluPhoto from "../assets/venkateshwarlu.jpeg";
 import vamshidharPhoto from "../assets/vamshidhar.jpeg";
 import saiPushpaLathaPhoto from "../assets/sai-pushpa-latha.jpeg";
 import aparanjiniPhoto from "../assets/aparajini-priyadarshini.jpeg";
-import gPadmaPhoto from "../assets/g-padma.jpeg";
+import gPadmaPhoto from "../assets/g-padma.png";
 export const guides = [
   {
     id: "n-srinivas-rao",
@@ -48,7 +50,7 @@ Thank you for being approachable, supportive, and considerate throughout our sec
 We are grateful for your guidance and wish you a very Happy Teachers' Day.
 `,
     closing: "With sincere respect and gratitude,",
-    photo: null,
+    photo: deepikaPhoto,
   },
 ];
 
@@ -73,7 +75,7 @@ Thank you for being not just our class teacher, but someone whose presence has m
 With sincere gratitude and warmest regards,
 CSE – Data Science, Section D
 `,
-    photo: null,
+    photo: rukmaniPhoto,
   },
 
   {
