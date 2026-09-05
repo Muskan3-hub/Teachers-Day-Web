@@ -14,7 +14,7 @@ function TributePage() {
   // Use the guide's salutation when available.
   // For lecturers, fall back to the appropriate greeting.
   const maamIds = [
-    "rukmani-priyanka",
+    "rukmini-priyanka",
     "p-and-s",
     "oops",
     "er",

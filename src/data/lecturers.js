@@ -1,5 +1,5 @@
 import hodPhoto from "../assets/hod.jpeg";
-import rukmaniPhoto from "../assets/rukmani-priyanka.jpeg";
+import rukmaniPhoto from "../assets/rukmini-priyanka.jpeg";
 import deepikaPhoto from "../assets/deepika-reddy.png";
 import venkateshwarluPhoto from "../assets/venkateshwarlu.jpeg";
 import vamshidharPhoto from "../assets/vamshidhar.jpeg";
@@ -56,8 +56,8 @@ We are grateful for your guidance and wish you a very Happy Teachers' Day.
 
 export const lecturers = [
   {
-    id: "rukmani-priyanka",
-    name: "Rukmani Priyanka",
+    id: "rukmini-priyanka",
+    name: "Rukmini Priyanka",
     role: "Class Teacher",
     shortDescription:
       "Sweet, kind, and friendly — the teacher who makes our class feel supported and comfortable.",
@@ -75,7 +75,7 @@ Thank you for being not just our class teacher, but someone whose presence has m
 With sincere gratitude and warmest regards,
 CSE – Data Science, Section D
 `,
-    photo: rukmaniPhoto,
+    photo: rukminiPhoto,
   },
 
   {
