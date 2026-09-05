@@ -1,11 +1,17 @@
 
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { lecturers, guides } from "../data/lecturers";
 
 function TributePage() {
   const { id } = useParams();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  }, [id]);
   // Search both guides and lecturers
   const person = [...guides, ...lecturers].find(
     (item) => item.id === id

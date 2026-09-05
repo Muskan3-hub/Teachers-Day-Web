@@ -56,7 +56,7 @@ We are grateful for your guidance and wish you a very Happy Teachers' Day.
 
 export const lecturers = [
   {
-    id: "rukmini-priyanka",
+    id: "rukmani-priyanka",
     name: "Rukmini Priyanka",
     role: "Class Teacher",
     shortDescription:
@@ -75,7 +75,7 @@ Thank you for being not just our class teacher, but someone whose presence has m
 With sincere gratitude and warmest regards,
 CSE – Data Science, Section D
 `,
-    photo: rukminiPhoto,
+    photo: rukmaniPhoto,
   },
 
   {
